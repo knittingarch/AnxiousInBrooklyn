@@ -19,13 +19,6 @@ module.exports = {
         name: `pages`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/content/assets`,
-    //     name: `assets`,
-    //   },
-    // },
     {
       resolve: `gatsby-source-contentful`,
       options: {

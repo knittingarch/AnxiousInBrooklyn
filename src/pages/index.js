@@ -1,48 +1,27 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+// import Link from 'gatsby-link'
+// import styled from 'styled-components'
+import get from 'lodash/get'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+// import Bio from "../components/bio"
+// import Layout from "../components/layout"
+// import SEO from "../components/seo"
 
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    // const { data } = this.props
+    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    // const posts = data.allMarkdownRemark.edges
+    const featuredPost = get(this, 'props.data.featured.edges[0].node')
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <article key={node.fields.slug}>
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-          )
-        })}
-      </Layout>
+      <div>
+        {featuredPost.title}<br />
+        {featuredPost.tags}<br />
+        {featuredPost.publishedDate}<br />
+        {featuredPost.slug}<br />
+        {featuredPost.description.internal.content}<br />
+      </div>
     )
   }
 }
@@ -55,6 +34,29 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
+    }
+    featured: allContentfulBlogPost(
+      sort: { fields: [publishedDate], order: DESC }
+      limit: 4
+    ) { 
+      edges {
+      node {
+        title
+        publishedDate
+        description {
+          internal {
+            content
+          }
+        }
+        slug
+        tags
+        media {
+          file {
+            url
+          }
+        }
+      }
+    }
     }
   }
 `
