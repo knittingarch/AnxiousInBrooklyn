@@ -1,5 +1,5 @@
 ## Anxious in Brooklyn
-A blog about overcoming anxiety in New York, powered by [Gatsby](https://www.gatsbyjs.com/)
+A blog about overcoming anxiety in New York through action, powered by [Gatsby]https://www.gatsbyjs.com/)
 
 **Running in development**
 `gatsby develop`
