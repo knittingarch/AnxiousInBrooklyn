@@ -10,6 +10,7 @@ class BlogPosts extends React.Component {
 
     return (
       <div>
+      <p>I am coming from src/pages/blog-posts.js</p>
       <h1>"Here's a list of all my blog posts!"</h1>
         {blogPosts.map(post => (
          <p>{post.node}</p>
