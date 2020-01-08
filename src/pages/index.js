@@ -16,6 +16,7 @@ class BlogIndex extends React.Component {
 
     return (
       <div>
+        <p>I am coming from src/pages/index.js</p>
         {featuredPost.title}<br />
         {featuredPost.tags}<br />
         {featuredPost.publishedDate}<br />

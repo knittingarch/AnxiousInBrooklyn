@@ -19,6 +19,7 @@ class BlogPostTemplate extends React.Component {
             </span>
           ))}
         </div>
+        <p>I am coming from tempates/blog-post.js</p>
         <p className="body-text">{post.description.internal.content}</p>
         <Link to={`/blogpost/${post.slug}`}>{post.title}</Link>
         <Link to="/">Back to Home</Link>
