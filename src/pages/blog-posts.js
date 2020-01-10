@@ -1,19 +1,22 @@
 import React from 'react'
-import { Link, graphql } from "gatsby";
+import { Link, graphql } from 'gatsby';
+import get from 'lodash/get'
 
-// import Layout from "../components/layout";
-// import SEO from "../components/seo";
+import BlogPost from '../components/BlogPost'
+
 
 class BlogPosts extends React.Component {
   render() {
-    const blogPosts = this.props.data.allContentfulBlogPost.edges;
+    const posts = get(this, 'props.data.blogPosts.edges')
 
     return (
       <div>
-      <p>I am coming from src/pages/blog-posts.js</p>
-      <h1>"Here's a list of all my blog posts!"</h1>
-        {blogPosts.map(post => (
-         <p>{post.node}</p>
+        {posts.map(post => (
+          <div>
+            <BlogPost key={post.node.slug} post={post.node} />
+            <Link to={`/${post.node.slug}`}>{post.node.title}</Link>
+            <br />
+          </div>
         ))}
         <Link to="/">Back to Home</Link>
       </div>
@@ -32,7 +35,7 @@ export const pageQuery = graphql`
         node {
           id
           title
-          publishedDate(formatString: "MMM DD, YYYY")
+          publishedDate(formatString:"MMM DD, YYYY")
           description {
             internal {
               content

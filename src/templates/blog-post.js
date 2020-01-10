@@ -1,30 +1,20 @@
 import React from 'react'
-import { Link, graphql } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import { Link, graphql } from 'gatsby'
+import get from 'lodash/get'
+
+import BlogPost from '../components/BlogPost'
+
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.contentfulBlogPost
+    const post = get(this, 'props.data.contentfulBlogPost')
 
     return (
-      <Layout>
-      <SEO title={post.title} />
       <div className="blogPost">
-        <h1>{post.title}</h1>
-        <div className="tags">
-          {post.tags.map(tag => (
-            <span className="tag" key={tag}>
-              {tag}
-            </span>
-          ))}
-        </div>
-        <p>I am coming from tempates/blog-post.js</p>
-        <p className="body-text">{post.description.internal.content}</p>
-        <Link to={`/blogpost/${post.slug}`}>{post.title}</Link>
+        <BlogPost key={post.slug} post={post} />
         <Link to="/">Back to Home</Link>
       </div>
-    </Layout>    )
+    )
   }
 }
 
@@ -34,7 +24,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishedDate(formatString: "MMM DD, YYYY")
+      publishedDate(formatString:"MMM DD, YYYY")
       description {
         internal {
           content
