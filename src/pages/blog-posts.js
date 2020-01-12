@@ -1,8 +1,20 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 
-import BlogPost from '../components/BlogPost'
+import SimplifiedBlogPost from '../components/SimplifiedBlogPost'
+
+
+const linkStyle = {
+  margin: '20px',
+  textDecoration: 'none',
+  color: '#f268ae',
+}
+
+const hrRule = {
+  width: '437px',
+  margin: '20px'
+}
 
 
 class BlogPosts extends React.Component {
@@ -13,12 +25,11 @@ class BlogPosts extends React.Component {
       <div>
         {posts.map(post => (
           <div>
-            <BlogPost key={post.node.slug} post={post.node} />
-            <Link to={`/${post.node.slug}`}>{post.node.title}</Link>
-            <br />
+            <SimplifiedBlogPost key={post.node.slug} post={post.node} />
+            <Link to="/" style={linkStyle}>Back to Home</Link>
+            <hr style={hrRule} />
           </div>
         ))}
-        <Link to="/">Back to Home</Link>
       </div>
     )
   }
