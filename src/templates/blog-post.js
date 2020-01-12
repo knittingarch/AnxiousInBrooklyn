@@ -5,14 +5,21 @@ import get from 'lodash/get'
 import BlogPost from '../components/BlogPost'
 
 
+const style = {
+  margin: '20px',
+  textDecoration: 'none',
+  color: '#f268ae',
+}
+
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this, 'props.data.contentfulBlogPost')
 
     return (
-      <div className="blogPost">
+      <div>
         <BlogPost key={post.slug} post={post} />
-        <Link to="/">Back to Home</Link>
+        <Link to='/' style={style}>Back to Home</Link>
       </div>
     )
   }
@@ -24,7 +31,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishedDate(formatString:"MMM DD, YYYY")
+      publishedDate(formatString:"MMMM Do, YYYY")
       description {
         internal {
           content
