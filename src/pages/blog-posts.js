@@ -1,38 +1,37 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
+import PropTypes from "prop-types"
+import React from "react"
+import { Link, graphql } from "gatsby"
 
-import SimplifiedBlogPost from '../components/SimplifiedBlogPost'
-
+import SimplifiedBlogPost from "../components/SimplifiedBlogPost"
 
 const linkStyle = {
-  margin: '20px',
-  textDecoration: 'none',
-  color: '#f268ae',
+  margin: "20px",
+  textDecoration: "none",
+  color: "#f268ae",
 }
 
 const hrRule = {
-  width: '437px',
-  margin: '20px'
+  width: "437px",
+  margin: "20px",
 }
 
 
-class BlogPosts extends React.Component {
-  render() {
-    const posts = get(this, 'props.data.blogPosts.edges')
+const BlogPosts = ({data}) => {
+  const posts = data.blogPosts.edges
 
-    return (
-      <div>
-        {posts.map(post => (
-          <div>
-            <SimplifiedBlogPost key={post.node.slug} post={post.node} />
-            <Link to="/" style={linkStyle}>Back to Home</Link>
-            <hr style={hrRule} />
-          </div>
-        ))}
-      </div>
-    )
-  }
+  return (
+    <div>
+      {posts.map(post => (
+        <div key={post.node.id}>
+          <SimplifiedBlogPost post={post.node} />
+          <Link to="/" style={linkStyle}>
+            Back to Home
+          </Link>
+          <hr style={hrRule} />
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default BlogPosts
@@ -40,13 +39,13 @@ export default BlogPosts
 export const pageQuery = graphql`
   query BlogPostsQuery {
     blogPosts: allContentfulBlogPost(
-    sort: { fields: [publishedDate], order: DESC }
+      sort: { fields: [publishedDate], order: DESC }
     ) {
       edges {
         node {
           id
           title
-          publishedDate(formatString:"MMM DD, YYYY")
+          publishedDate(formatString: "MMM DD, YYYY")
           description {
             internal {
               content
@@ -64,3 +63,7 @@ export const pageQuery = graphql`
     }
   }
 `
+
+BlogPosts.propTypes = {
+  data: PropTypes.object,
+}
