@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
 const BlogPostImageWrapper = styled.div`
   padding: 5px;
@@ -19,9 +20,8 @@ const ImageFooter = styled.div`
 `
 
 const ImageWidth = {
-  width: '100%'
+  width: "100%",
 }
-
 
 const Image = ({ src, alt }) => (
   <BlogPostImageWrapper>
@@ -31,5 +31,10 @@ const Image = ({ src, alt }) => (
     </MainImage>
   </BlogPostImageWrapper>
 )
+
+Image.propTypes = {
+  alt: PropTypes.string,
+  src: PropTypes.string,
+}
 
 export default Image

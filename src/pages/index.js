@@ -1,11 +1,11 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
-import get from 'lodash/get'
+import get from "lodash/get"
+import { Link, graphql } from "gatsby"
+import React from "react"
+import styled from "styled-components"
 
-import FeaturedBlogPost from '../components/FeaturedBlogPost'
-import blogPostBorder from '../images/blog_post_border.svg'
-import dotGridPaper from '../images/dot-grid.png'
+import blogPostBorder from "../images/blog_post_border.svg"
+import dotGridPaper from "../images/dot-grid.png"
+import FeaturedBlogPost from "../components/FeaturedBlogPost"
 
 const MainWrapper = styled.div`
   background-image: url(${dotGridPaper});
@@ -21,13 +21,13 @@ const AboutWrapper = styled.section`
 `
 
 const SiteTitle = styled.h1`
-  font-family: 'Fredericka the Great';
+  font-family: "Fredericka the Great";
   color: #f3c39a;
 `
 
 const style = {
-  textDecoration: 'none',
-  color: '#f268ae',
+  textDecoration: "none",
+  color: "#f268ae",
 }
 
 const FeaturedPostWrapper = styled.section`
@@ -42,33 +42,22 @@ const FeaturedPostWrapper = styled.section`
 
 class BlogIndex extends React.Component {
   render() {
-    const post = get(this, 'props.data.featured.edges[0].node')
+    const post = get(this, "props.data.featured.edges[0].node")
 
     return (
       <MainWrapper>
         <AboutWrapper>
-          <SiteTitle>
-            Anxious in Brooklyn
-          </SiteTitle>
-          <Link
-            to={`/about/`}
-            style={style}
-          >
+          <SiteTitle>Anxious in Brooklyn</SiteTitle>
+          <Link to={`/about/`} style={style}>
             About this blog
           </Link>
           <br />
-          <Link 
-            to={`/blog-posts/`}
-            style={style}
-          >
+          <Link to={`/blog-posts/`} style={style}>
             All Posts
           </Link>
         </AboutWrapper>
         <FeaturedPostWrapper>
-          <FeaturedBlogPost
-            key={post.slug}
-            post={post}
-          />
+          <FeaturedBlogPost key={post.slug} post={post} />
         </FeaturedPostWrapper>
       </MainWrapper>
     )
@@ -87,11 +76,11 @@ export const pageQuery = graphql`
     featured: allContentfulBlogPost(
       sort: { fields: [publishedDate], order: DESC }
       limit: 1
-    ) { 
+    ) {
       edges {
         node {
           title
-          publishedDate(formatString:"MMMM Do, YYYY")
+          publishedDate(formatString: "MMMM Do, YYYY")
           description {
             internal {
               content

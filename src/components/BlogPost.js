@@ -1,15 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
-import Date from './Date'
-import Image from './Image'
-import Paragraph from './Paragraph'
-import Tag from './Tag'
-import Title from './Title'
-
-// Possible Colors
-// color: #7cc2fd;
-// color: #f268ae;
+import Date from "./Date"
+import Image from "./Image"
+import Paragraph from "./Paragraph"
+import Tag from "./Tag"
+import Title from "./Title"
 
 const BlogPostWrapper = styled.section`
   margin: 20px;
@@ -23,20 +20,21 @@ const ImageWrapper = styled.div`
 const BlogPost = ({ post }) => (
   <BlogPostWrapper>
     <Date date={post.publishedDate} />
-    {post.tags.map((tag) => (
-      <Tag tag={tag} />
+    {post.tags.map(tag => (
+      <Tag key={post.id} tag={tag} />
     ))}
     <Title title={post.title} />
     <ImageWrapper>
-      {post.media.map((image) => (
-          <Image
-            src={image.file.url}
-            alt={image.file.fileName}
-          />
+      {post.media.map(image => (
+        <Image key={post.id} src={image.file.url} alt={image.file.fileName} />
       ))}
     </ImageWrapper>
     <Paragraph text={post.description.internal.content} />
   </BlogPostWrapper>
 )
+
+BlogPost.propTypes = {
+  post: PropTypes.object,
+}
 
 export default BlogPost

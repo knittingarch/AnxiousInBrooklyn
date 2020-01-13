@@ -1,11 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
-import Date from './Date'
-import FeaturedImage from './FeaturedImage'
-import Tag from './Tag'
-import Title from './Title'
-import TruncatedParagraph from './TruncatedParagraph'
+import Date from "./Date"
+import FeaturedImage from "./FeaturedImage"
+import Tag from "./Tag"
+import Title from "./Title"
+import TruncatedParagraph from "./TruncatedParagraph"
 
 const BlogPostWrapper = styled.section`
   margin: 20px;
@@ -13,23 +14,26 @@ const BlogPostWrapper = styled.section`
   align-content: flex-end;
 `
 
-
-const BlogPost = ({ post }) => (
+const FeaturedBlogPost = ({ post }) => (
   <BlogPostWrapper>
-    <Date date={post.publishedDate}/>
-    {post.tags.map((tag) => (
-      <Tag tag={tag} />
+    <Date date={post.publishedDate} />
+    {post.tags.map(tag => (
+      <Tag key={post.id} tag={tag} />
     ))}
     <Title title={post.title} />
     <FeaturedImage
       src={post.media[0].file.url}
       alt={post.media[0].file.fileName}
     />
-    <TruncatedParagraph 
+    <TruncatedParagraph
       text={post.description.internal.content}
       slug={post.slug}
     />
   </BlogPostWrapper>
 )
 
-export default BlogPost
+FeaturedBlogPost.propTypes = {
+  post: PropTypes.object,
+}
+
+export default FeaturedBlogPost

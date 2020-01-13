@@ -1,7 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
-import natureTagSwipe from '../images/nature_swipe.png'
+import natureTagSwipe from "../images/nature_swipe.png"
 
 const BlogPostTagWrapper = styled.div`
   background-image: url(${natureTagSwipe});
@@ -13,16 +14,17 @@ const BlogPostTagWrapper = styled.div`
 const BlogPostTag = styled.li`
   list-style-type: none;
   margin-left: 5px;
-  font-family: 'League Script', cursive;
+  font-family: "League Script", cursive;
 `
-
 
 const Tag = ({ tag }) => (
   <BlogPostTagWrapper>
-    <BlogPostTag>
-      {tag}
-    </BlogPostTag>
+    <BlogPostTag>{tag}</BlogPostTag>
   </BlogPostTagWrapper>
 )
+
+Tag.propTypes = {
+  tag: PropTypes.string,
+}
 
 export default Tag

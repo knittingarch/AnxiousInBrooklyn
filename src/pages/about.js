@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
+import React from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
 
-import dotGridPaper from '../images/dot-grid.png'
+import dotGridPaper from "../images/dot-grid.png"
 
 const MainWrapper = styled.div`
   background-image: url(${dotGridPaper});
@@ -15,27 +15,17 @@ const PageTitle = styled.h1`
 `
 
 const style = {
-  textDecoration: 'none',
-  marginTop: '20px',
+  textDecoration: "none",
+  marginTop: "20px",
 }
 
-class AboutPage extends React.Component {
-  render() {
-
-    return(
-      <MainWrapper>
-        <PageTitle>
-          About this blog
-        </PageTitle>
-        <Link 
-          to='/'
-          style={style}
-        >
-          Back to Home
-        </Link>
-      </MainWrapper>
-    )
-  }
-}
+const AboutPage = () => (
+  <MainWrapper>
+    <PageTitle>About this blog</PageTitle>
+    <Link to="/" style={style}>
+      Back to Home
+    </Link>
+  </MainWrapper>
+)
 
 export default AboutPage
