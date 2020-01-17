@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+spacer="****************************************\n"
+
+printf "Setting up Gatsby dependencies via npm...\n"
+printf "$spacer"
+npm install
+
+printf "Creating development .env file...\n"
+printf "$spacer"
+if [ ! -f .env.development ]; then
+  touch .env.development
+fi
+
+printf "Installing styled-components...\n"
+printf "$spacer"
+npm install --save styled-components
+
+printf "Installing react-truncate...\n"
+printf "$spacer"
+npm install react-truncate
