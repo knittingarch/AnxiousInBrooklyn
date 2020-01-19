@@ -16,8 +16,8 @@ const BlogPostWrapper = styled.section`
 const SimplifiedBlogPost = ({ post }) => (
   <BlogPostWrapper>
     <Date date={post.publishedDate} />
-    {post.tags.map(tag => (
-      <Tag key={post.id} tag={tag} />
+    {post.tags.map((tag, index) => (
+      <Tag key={index} tag={tag} />
     ))}
     <Title title={post.title} />
     <TruncatedParagraph

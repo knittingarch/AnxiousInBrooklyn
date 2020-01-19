@@ -10,15 +10,15 @@ import TruncatedParagraph from "./TruncatedParagraph"
 
 const BlogPostWrapper = styled.section`
   margin: 20px;
-  width: 477px;
+  // width: 477px;
   align-content: flex-end;
 `
 
 const FeaturedBlogPost = ({ post }) => (
   <BlogPostWrapper>
     <Date date={post.publishedDate} />
-    {post.tags.map(tag => (
-      <Tag key={post.id} tag={tag} />
+    {post.tags.map((tag, index) => (
+      <Tag key={index} tag={tag} />
     ))}
     <Title title={post.title} />
     <FeaturedImage

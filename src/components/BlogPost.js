@@ -21,12 +21,16 @@ const BlogPost = ({ post }) => (
   <BlogPostWrapper>
     <Date date={post.publishedDate} />
     {post.tags.map(tag => (
-      <Tag key={post.id} tag={tag} />
+      <Tag key={tag} tag={tag} />
     ))}
     <Title title={post.title} />
     <ImageWrapper>
       {post.media.map(image => (
-        <Image key={post.id} src={image.file.url} alt={image.file.fileName} />
+        <Image
+          key={image.file.url}
+          src={image.file.url}
+          alt={image.file.fileName}
+        />
       ))}
     </ImageWrapper>
     <Paragraph text={post.description.internal.content} />

@@ -57,7 +57,7 @@ class BlogIndex extends React.Component {
           </Link>
         </AboutWrapper>
         <FeaturedPostWrapper>
-          <FeaturedBlogPost key={post.slug} post={post} />
+          <FeaturedBlogPost post={post} />
         </FeaturedPostWrapper>
       </MainWrapper>
     )

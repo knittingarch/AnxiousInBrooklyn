@@ -1,6 +1,6 @@
+import PropTypes from "prop-types"
 import React from "react"
 import { Link, graphql } from "gatsby"
-import get from "lodash/get"
 
 import SimplifiedBlogPost from "../components/SimplifiedBlogPost"
 
@@ -15,24 +15,22 @@ const hrRule = {
   margin: "20px",
 }
 
-class BlogPosts extends React.Component {
-  render() {
-    const posts = get(this, "props.data.blogPosts.edges")
+const BlogPosts = ({ data }) => {
+  const posts = data.blogPosts.edges
 
-    return (
-      <div>
-        {posts.map(post => (
-          <>
-            <SimplifiedBlogPost key={post.node.id} post={post.node} />
-            <Link to="/" style={linkStyle}>
-              Back to Home
-            </Link>
-            <hr style={hrRule} />
-          </>
-        ))}
-      </div>
-    )
-  }
+  return (
+    <div>
+      {posts.map(post => (
+        <div key={post.node.id}>
+          <SimplifiedBlogPost post={post.node} />
+          <Link to="/" style={linkStyle}>
+            Back to Home
+          </Link>
+          <hr style={hrRule} />
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default BlogPosts
@@ -64,3 +62,7 @@ export const pageQuery = graphql`
     }
   }
 `
+
+BlogPosts.propTypes = {
+  data: PropTypes.object,
+}

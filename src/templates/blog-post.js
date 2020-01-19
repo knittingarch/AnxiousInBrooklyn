@@ -16,7 +16,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div>
-        <BlogPost key={post.id} post={post} />
+        <BlogPost post={post} />
         <Link to="/" style={style}>
           Back to Home
         </Link>
