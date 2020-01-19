@@ -9,9 +9,9 @@ import Title from "./Title"
 import TruncatedParagraph from "./TruncatedParagraph"
 
 const BlogPostWrapper = styled.section`
-  margin: 20px;
-  // width: 477px;
+  margin: var(--standard-spacing);
   align-content: flex-end;
+  width: 92%;
 `
 
 const FeaturedBlogPost = ({ post }) => (

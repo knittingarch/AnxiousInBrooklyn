@@ -2,18 +2,18 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-const BlogPostImageWrapper = styled.div`
-  width: 417px;
+const ImageWrapper = styled.div`
+  object-fit: cover;
 `
 
 const ImageWidth = {
-  width: "100%",
+  margin: "0 auto",
 }
 
 const FeaturedImage = ({ src, alt }) => (
-  <BlogPostImageWrapper>
+  <ImageWrapper>
     <img src={src} alt={alt} style={ImageWidth} />
-  </BlogPostImageWrapper>
+  </ImageWrapper>
 )
 
 FeaturedImage.propTypes = {

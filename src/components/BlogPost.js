@@ -9,12 +9,11 @@ import Tag from "./Tag"
 import Title from "./Title"
 
 const BlogPostWrapper = styled.section`
-  margin: 20px;
-  flex-direction: row;
+  margin: var(--standard-spacing);
 `
 
 const ImageWrapper = styled.div`
-  display: inline-block;
+  display: flex;
 `
 
 const BlogPost = ({ post }) => (

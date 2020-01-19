@@ -2,10 +2,10 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-import natureTagSwipe from "../images/nature_swipe.png"
+import tagSwipe from "../images/swipe.png"
 
 const BlogPostTagWrapper = styled.div`
-  background-image: url(${natureTagSwipe});
+  background-image: url(${tagSwipe});
   background-repeat: no-repeat;
   display: inline-block;
   width: 75px;
@@ -13,8 +13,10 @@ const BlogPostTagWrapper = styled.div`
 
 const BlogPostTag = styled.li`
   list-style-type: none;
-  margin-left: 5px;
+  margin-left: 15px;
   font-family: "League Script", cursive;
+  letter-spacing: 0.5px;
+  color: #000;
 `
 
 const Tag = ({ tag }) => (

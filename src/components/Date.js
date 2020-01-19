@@ -3,10 +3,9 @@ import React from "react"
 import styled from "styled-components"
 
 const BlogPostDate = styled.h1`
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   font-family: "Fredericka the Great";
-  font-size: 48px;
-  color: #272727;
+  font-size: 36px;
 `
 
 const Date = ({ date }) => <BlogPostDate>{date}</BlogPostDate>

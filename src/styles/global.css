@@ -1,2 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
-@import url('https://fonts.googleapis.com/css?family=League+Script&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap");
+@import url("https://fonts.googleapis.com/css?family=League+Script&display=swap");
+
+:root {
+  --mobile-width: 320px;
+  --mobile-large-width: 481px;
+  --tablet-large-width: 768px;
+  --laptop-width: 1025px;
+  --desktop-width: 1281px;
+  --standard-spacing: 20px;
+}
+
+body {
+  background-image: url("../images/dot-grid.png");
+  background-color: #ffffff;
+  background-repeat: repeat;
+  font-size: 16px;
+  color: #333;
+}

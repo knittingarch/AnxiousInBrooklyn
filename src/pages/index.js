@@ -3,42 +3,68 @@ import { Link, graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-import blogPostBorder from "../images/blog_post_border.svg"
-import dotGridPaper from "../images/dot-grid.png"
+// import blogPostBorder from "../images/blog_post_border.svg"
 import FeaturedBlogPost from "../components/FeaturedBlogPost"
 
 const MainWrapper = styled.div`
-  background-image: url(${dotGridPaper});
-  background-repeat: repeat;
-  display: flex;
-  height: 700px;
-  width: 1400px;
+  display: grid;
+  width: var(--desktop-width);
+  margin: 0 auto;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 275px repeat(2, 1fr);
+  grid-template-areas:
+    "activities activities activities activities activities activities"
+    ".          .          .          blog-post  blog-post  blog-post"
+    "blog-title blog-title .          blog-post  blog-post  blog-post";
 `
 
-const AboutWrapper = styled.section`
-  align-self: flex-end;
-  margin: 0 75px 200px;
+// @media (min-width: 320px) {
+//     .grid {
+//       grid-template-areas:
+//         "activities"
+//         "blog-title"
+//         "blog-post";
+//     }
+//   }
+
+// const ActivitiesBanner = styled.section`
+//   grid-area: activities;
+// `
+
+const BlogTitleWrapper = styled.section`
+  grid-area: blog-title;
+  align-self: center;
+  justify-self: center;
+`
+
+// const FeaturedPostWrapper = styled.section`
+//   grid-area: blog-post;
+//   background-image: url(${blogPostBorder});
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   width: var(--mobile-large-width);
+//   margin-bottom: -(var(--standard-spacing));
+// `
+
+const FeaturedPostWrapper = styled.section`
+  grid-area: blog-post;
+  padding: var(--standard-spacing);
+  border: 1px dashed #ccc;
+  background: rgb(238, 238, 238, 0.5);
+  width: var(--mobile-large-width);
+  margin-bottom: -(var(--standard-spacing));
 `
 
 const SiteTitle = styled.h1`
-  font-family: "Fredericka the Great";
   color: #f3c39a;
+  letter-spacing: 2px;
 `
 
-const style = {
+const linkStyle = {
   textDecoration: "none",
   color: "#f268ae",
+  fontSize: "18px",
 }
-
-const FeaturedPostWrapper = styled.section`
-  align-self: flex-end;
-  background-image: url(${blogPostBorder});
-  background-repeat: none;
-  width: 477px;
-  height: 425px;
-  padding: 10px;
-  margin: auto;
-`
 
 class BlogIndex extends React.Component {
   render() {
@@ -46,16 +72,16 @@ class BlogIndex extends React.Component {
 
     return (
       <MainWrapper>
-        <AboutWrapper>
+        <BlogTitleWrapper>
           <SiteTitle>Anxious in Brooklyn</SiteTitle>
-          <Link to={`/about/`} style={style}>
-            About this blog
+          <Link to={`/about/`} style={linkStyle}>
+            About This Blog
           </Link>
           <br />
-          <Link to={`/blog-posts/`} style={style}>
+          <Link to={`/blog-posts/`} style={linkStyle}>
             All Posts
           </Link>
-        </AboutWrapper>
+        </BlogTitleWrapper>
         <FeaturedPostWrapper>
           <FeaturedBlogPost post={post} />
         </FeaturedPostWrapper>
