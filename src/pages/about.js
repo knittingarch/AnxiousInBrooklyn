@@ -2,7 +2,12 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-// import rippedPaper from "../images/ripped-paper-with-tape.png"
+import BathImage from "../images/baths.png"
+import BeachImage from "../images/beach.png"
+import KnittingImage from "../images/knitting.png"
+import LavendarImage from "../images/lavender.png"
+import NatureImage from "../images/nature.png"
+import ReadingImage from "../images/reading.png"
 
 const MainWrapper = styled.div`
   display: grid;
@@ -11,27 +16,10 @@ const MainWrapper = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 275px repeat(2, 1fr);
   grid-template-areas:
-    "activities activities activities activities activities activities"
+    "beach nature lavendar knitting     reading    baths"
     ".          about      about      about      about      ."
     ".          about      about      about      about      .";
 `
-
-// &::before {
-//   background-image: url(${rippedPaper});
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   content: "";
-//   position: absolute;
-//   width: 75%;
-//   height: 75%;
-//   top: 135px;
-//   margin: 0 auto;
-//   z-index: -1;
-// }
-
-// const ActivitiesBanner = styled.section`
-//   grid-area: activities;
-// `
 
 const AboutSection = styled.section`
   grid-area: about;
@@ -40,6 +28,25 @@ const AboutSection = styled.section`
   padding: var(--standard-spacing);
   border: 1px dashed #bbb;
   background: rgb(238, 238, 238, 0.5);
+`
+
+const BeachDangle = styled.img`
+  grid-area: beach;
+`
+const KnittingDangle = styled.img`
+  grid-area: knitting;
+`
+const LavendarDangle = styled.img`
+  grid-area: lavendar;
+`
+const NatureDangle = styled.img`
+  grid-area: nature;
+`
+const ReadingDangle = styled.img`
+  grid-area: reading;
+`
+const BathDangle = styled.img`
+  grid-area: baths;
 `
 
 const PageTitle = styled.h1`
@@ -64,6 +71,12 @@ const linkStyle = {
 
 const AboutPage = () => (
   <MainWrapper>
+    <BeachDangle src={BeachImage} width="125px" />
+    <NatureDangle src={NatureImage} width="175px" />
+    <LavendarDangle src={LavendarImage} width="125px" />
+    <KnittingDangle src={KnittingImage} width="160px" />
+    <ReadingDangle src={ReadingImage} width="150px" />
+    <BathDangle src={BathImage} width="125px" />
     <AboutSection>
       <PageTitle>
         <Welcome>Welcome to </Welcome> Anxious in Brooklyn

@@ -5,20 +5,42 @@ import styled from "styled-components"
 
 import BlogPost from "../components/BlogPost"
 
+import BathImage from "../images/baths.png"
+import BeachImage from "../images/beach.png"
+import KnittingImage from "../images/knitting.png"
+import LavendarImage from "../images/lavender.png"
+import NatureImage from "../images/nature.png"
+import ReadingImage from "../images/reading.png"
+
 const MainWrapper = styled.div`
   display: grid;
   max-width: 1280px;
   margin: 0 auto;
-  grid-template-columns: 0.5fr 1fr 0.5fr;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 250px 1fr;
   grid-template-areas:
-    "activities activities activities"
-    ".          blog-post  .";
+    "beach nature lavendar knitting     reading    baths"
+    ". . blog-post blog-post . .";
 `
 
-// const ActivitiesBanner = styled.section`
-//   grid-area: activities;
-// `
+const BeachDangle = styled.img`
+  grid-area: beach;
+`
+const KnittingDangle = styled.img`
+  grid-area: knitting;
+`
+const LavendarDangle = styled.img`
+  grid-area: lavendar;
+`
+const NatureDangle = styled.img`
+  grid-area: nature;
+`
+const ReadingDangle = styled.img`
+  grid-area: reading;
+`
+const BathDangle = styled.img`
+  grid-area: baths;
+`
 
 const BlogPostWrapper = styled.section`
   grid-area: blog-post;
@@ -42,6 +64,12 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <MainWrapper>
+        <BeachDangle src={BeachImage} width="125px" />
+        <NatureDangle src={NatureImage} width="175px" />
+        <LavendarDangle src={LavendarImage} width="125px" />
+        <KnittingDangle src={KnittingImage} width="160px" />
+        <ReadingDangle src={ReadingImage} width="150px" />
+        <BathDangle src={BathImage} width="125px" />
         <BlogPostWrapper>
           <BlogPost post={post} />
           <Link to="/" style={linkStyle}>

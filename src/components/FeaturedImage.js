@@ -4,21 +4,20 @@ import styled from "styled-components"
 
 const ImageWrapper = styled.div`
   object-fit: cover;
+  background: ${props => `url(${props.backgroundImage}) no-repeat`};
+  height: 15rem;
+  width: 100%;
+  margin: 0.5rem 0 1.5rem;
 `
 
-const ImageWidth = {
-  margin: "0 auto",
-}
-
-const FeaturedImage = ({ src, alt }) => (
-  <ImageWrapper>
-    <img src={src} alt={alt} style={ImageWidth} />
-  </ImageWrapper>
+const FeaturedImage = ({ backgroundImage }) => (
+  <ImageWrapper backgroundImage={backgroundImage} />
 )
 
 FeaturedImage.propTypes = {
   alt: PropTypes.string,
   src: PropTypes.string,
+  backgroundImage: PropTypes.string,
 }
 
 export default FeaturedImage

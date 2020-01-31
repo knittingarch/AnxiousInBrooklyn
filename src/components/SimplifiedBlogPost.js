@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-import Date from "./Date"
+import PostDate from "./Date"
 import Tag from "./Tag"
 import Thumbnail from "./Thumbnail"
 import Title from "./Title"
@@ -13,10 +13,11 @@ const BlogPostWrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, 50%);
-  grid-column-gap: 75px;
+  grid-column-gap: 5px;
   grid-template-areas:
     "date thumbnail"
     "post post";
+  margin-bottom: -20px;
 `
 
 const DateWrapper = styled.div`
@@ -35,9 +36,9 @@ const PostWrapper = styled.div`
 const SimplifiedBlogPost = ({ post }) => (
   <BlogPostWrapper>
     <DateWrapper>
-      <Date date={post.publishedDate} />
-      {post.tags.map((tag, index) => (
-        <Tag key={index} tag={tag} />
+      <PostDate date={post.publishedDate} />
+      {post.tags.map(tag => (
+        <Tag key={tag} tag={tag} />
       ))}
     </DateWrapper>
     <ThumbnailWrapper>

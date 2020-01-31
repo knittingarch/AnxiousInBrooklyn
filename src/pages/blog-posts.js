@@ -5,26 +5,44 @@ import styled from "styled-components"
 
 import SimplifiedBlogPost from "../components/SimplifiedBlogPost"
 
+import BathImage from "../images/baths.png"
+import BeachImage from "../images/beach.png"
+import KnittingImage from "../images/knitting.png"
+import LavendarImage from "../images/lavender.png"
+import NatureImage from "../images/nature.png"
+import ReadingImage from "../images/reading.png"
+
 const MainWrapper = styled.div`
   display: grid;
   width: var(--desktop-width);
   margin: 0 auto;
-  grid-template-columns: 0.5fr var(--mobile-large-width) 0.5fr;
-  grid-template-areas: "activities-left blog-posts activities-right";
+  grid-template-columns: repeat(3, 11%) 33.3% repeat(3, 11%);
+  grid-template-areas: "beach nature lavendar blog-posts knitting reading baths";
 `
-
-// const ActivitiesBanner = styled.section`
-//   grid-area: activities-left;
-// `
-
-// const ActivitiesBanner = styled.section`
-//   grid-area: activities-right;
-// `
 
 const BlogPostsWrapper = styled.section`
   grid-area: blog-posts;
   align-self: center;
   justify-self: center;
+`
+
+const BeachDangle = styled.img`
+  grid-area: beach;
+`
+const KnittingDangle = styled.img`
+  grid-area: knitting;
+`
+const LavendarDangle = styled.img`
+  grid-area: lavendar;
+`
+const NatureDangle = styled.img`
+  grid-area: nature;
+`
+const ReadingDangle = styled.img`
+  grid-area: reading;
+`
+const BathDangle = styled.img`
+  grid-area: baths;
 `
 
 const Posts = styled.div`
@@ -45,6 +63,12 @@ const BlogPosts = ({ data }) => {
   return (
     <MainWrapper>
       <BlogPostsWrapper>
+        <BeachDangle src={BeachImage} width="125px" />
+        <NatureDangle src={NatureImage} width="175px" />
+        <LavendarDangle src={LavendarImage} width="125px" />
+        <KnittingDangle src={KnittingImage} width="160px" />
+        <ReadingDangle src={ReadingImage} width="150px" />
+        <BathDangle src={BathImage} width="125px" />
         {posts.map(post => (
           <Posts key={post.node.id}>
             <SimplifiedBlogPost post={post.node} />

@@ -3,48 +3,50 @@ import { Link, graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-// import blogPostBorder from "../images/blog_post_border.svg"
 import FeaturedBlogPost from "../components/FeaturedBlogPost"
+import BathImage from "../images/baths.png"
+import BeachImage from "../images/beach.png"
+import KnittingImage from "../images/knitting.png"
+import LavendarImage from "../images/lavender.png"
+import NatureImage from "../images/nature.png"
+import ReadingImage from "../images/reading.png"
 
 const MainWrapper = styled.div`
   display: grid;
   width: var(--desktop-width);
   margin: 0 auto;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 275px repeat(2, 1fr);
+  grid-template-rows: 250px repeat(2, 1fr);
   grid-template-areas:
-    "activities activities activities activities activities activities"
-    ".          .          .          blog-post  blog-post  blog-post"
+    "beach nature lavendar knitting     reading    baths"
+    ".     .        .        blog-post  blog-post  blog-post"
     "blog-title blog-title .          blog-post  blog-post  blog-post";
 `
 
-// @media (min-width: 320px) {
-//     .grid {
-//       grid-template-areas:
-//         "activities"
-//         "blog-title"
-//         "blog-post";
-//     }
-//   }
-
-// const ActivitiesBanner = styled.section`
-//   grid-area: activities;
-// `
+const BeachDangle = styled.img`
+  grid-area: beach;
+`
+const KnittingDangle = styled.img`
+  grid-area: knitting;
+`
+const LavendarDangle = styled.img`
+  grid-area: lavendar;
+`
+const NatureDangle = styled.img`
+  grid-area: nature;
+`
+const ReadingDangle = styled.img`
+  grid-area: reading;
+`
+const BathDangle = styled.img`
+  grid-area: baths;
+`
 
 const BlogTitleWrapper = styled.section`
   grid-area: blog-title;
   align-self: center;
   justify-self: center;
 `
-
-// const FeaturedPostWrapper = styled.section`
-//   grid-area: blog-post;
-//   background-image: url(${blogPostBorder});
-//   background-repeat: no-repeat;
-//   background-size: contain;
-//   width: var(--mobile-large-width);
-//   margin-bottom: -(var(--standard-spacing));
-// `
 
 const FeaturedPostWrapper = styled.section`
   grid-area: blog-post;
@@ -72,6 +74,12 @@ class BlogIndex extends React.Component {
 
     return (
       <MainWrapper>
+        <BeachDangle src={BeachImage} width="125px" />
+        <NatureDangle src={NatureImage} width="175px" />
+        <LavendarDangle src={LavendarImage} width="125px" />
+        <KnittingDangle src={KnittingImage} width="160px" />
+        <ReadingDangle src={ReadingImage} width="150px" />
+        <BathDangle src={BathImage} width="125px" />
         <BlogTitleWrapper>
           <SiteTitle>Anxious in Brooklyn</SiteTitle>
           <Link to={`/about/`} style={linkStyle}>

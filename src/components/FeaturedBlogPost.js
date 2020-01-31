@@ -17,14 +17,11 @@ const BlogPostWrapper = styled.section`
 const FeaturedBlogPost = ({ post }) => (
   <BlogPostWrapper>
     <Date date={post.publishedDate} />
-    {post.tags.map((tag, index) => (
-      <Tag key={index} tag={tag} />
+    {post.tags.map(tag => (
+      <Tag key={tag} tag={tag} />
     ))}
     <Title title={post.title} />
-    <FeaturedImage
-      src={post.media[0].file.url}
-      alt={post.media[0].file.fileName}
-    />
+    <FeaturedImage backgroundImage={post.media[0].file.url} />
     <TruncatedParagraph
       text={post.description.internal.content}
       slug={post.slug}
