@@ -1,45 +1,44 @@
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React from "react"
+import styled from "styled-components"
 
-const BlogPostWrapper = styled.div`
-  border: 3px solid #000;
-  width: 50%;
+import Date from "./Date"
+import Image from "./Image"
+import Paragraph from "./Paragraph"
+import Tag from "./Tag"
+import Title from "./Title"
+
+const BlogPostWrapper = styled.section`
+  margin: 20px;
+  flex-direction: row;
 `
 
-const BlogPostDate = styled.h1`
-  color: #7cc2fd;
-`
-
-const BlogPostTitle = styled.h2`
-  color: #f268ae;
-`
-
-const BlogPostTags = styled.li`
-  color: #dcce76;
-  list-style-type: none;
-`
-
-const BlogPostText = styled.p`
-  font-size: 14px;
+const ImageWrapper = styled.div`
+  display: inline-block;
 `
 
 const BlogPost = ({ post }) => (
   <BlogPostWrapper>
-    <BlogPostDate>
-      {post.publishedDate}
-    </BlogPostDate>
-    <BlogPostTags>
-      {post.tags}
-    </BlogPostTags>
-    <BlogPostTitle>
-      {post.title}
-    </BlogPostTitle>
-
-    <img src={post.media[0].file.url} alt="" />
-    <BlogPostText>
-      {post.description.internal.content}
-    </BlogPostText>
+    <Date date={post.publishedDate} />
+    {post.tags.map(tag => (
+      <Tag key={tag} tag={tag} />
+    ))}
+    <Title title={post.title} />
+    <ImageWrapper>
+      {post.media.map(image => (
+        <Image
+          key={image.file.url}
+          src={image.file.url}
+          alt={image.file.fileName}
+        />
+      ))}
+    </ImageWrapper>
+    <Paragraph text={post.description.internal.content} />
   </BlogPostWrapper>
 )
+
+BlogPost.propTypes = {
+  post: PropTypes.object,
+}
 
 export default BlogPost
